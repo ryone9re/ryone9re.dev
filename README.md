@@ -1,20 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/25ca2fcf-0845-47fb-b8fd-8ae4de27b6b0/deploy-status)](https://app.netlify.com/sites/ryone9re/deploys)
+
 # ryone9re
 
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+This is my site source
