@@ -1,8 +1,8 @@
 <template>
   <div class="about-container">
     <p class="about">
-      こんにちは！ ryone9reと申す者です｡ Ruby, Goをメインに書いてます｡<br />
-      C++, Vue.js/ts, Python も書けます｡<br />
+      こんにちは！ ryone9reと申す者です｡ Goをメインに書いてます｡<br />
+      JavaScript(Typescript), Python, Ruby, C++ も書けます｡<br />
       この子はcuriosityくんです｡ かわいいですね〜<br />
     </p>
     <div class="curiosity">
