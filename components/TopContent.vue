@@ -8,7 +8,7 @@
       <a href="/blog" class="icon-btn"
         ><font-awesome-icon :icon="['fas', 'blog']" class="icon"
       /></a>
-      <a href="https://github.com/KuRImoN0o6/" class="icon-btn"
+      <a href="https://github.com/ryone9re/" class="icon-btn"
         ><font-awesome-icon :icon="['fab', 'github']" class="icon"
       /></a>
     </div>
