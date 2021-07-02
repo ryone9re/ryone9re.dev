@@ -13,6 +13,11 @@
         </li>
       </ul>
     </div>
+    <div class="toIndex">
+      <a href="/">
+        <font-awesome-icon :icon="['fas', 'chevron-circle-left']" />
+      </a>
+    </div>
   </div>
 </template>
 
@@ -61,5 +66,15 @@ li {
 
 a {
   text-decoration: none;
+}
+
+.toIndex {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.toIndex a {
+  color: #444;
+  font-size: calc(10px + 1.5vw);
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <nuxt-link to="/" class="button--top"
-    ><font-awesome-icon :icon="['fas', 'times']"
-  /></nuxt-link>
+  <nuxt-link to="/" class="button--top">
+    <font-awesome-icon :icon="['fas', 'times']" />
+  </nuxt-link>
 </template>
 
 <style>
