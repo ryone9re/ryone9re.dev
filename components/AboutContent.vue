@@ -2,7 +2,7 @@
   <div class="about-container">
     <p class="about">
       こんにちは！ ryone9reと申す者です｡ Goをメインに書いてます｡<br />
-      Javascript(Typescript), Python, Ruby, C++ も書けます｡<br />
+      Javascript, Typescript, Python, Ruby, C++ も書けます｡<br />
       この子はcuriosityくんです｡ かわいいですね〜<br />
     </p>
     <div class="curiosity">
