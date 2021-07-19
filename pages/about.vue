@@ -3,7 +3,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {}
+  },
+  head() {
+    return {
+      title: 'about || ryone9re',
+      meta: [
+        { hid: 'description', name: 'description', content: 'description' },
+      ],
+    }
+  },
+}
 </script>
 
 <style>

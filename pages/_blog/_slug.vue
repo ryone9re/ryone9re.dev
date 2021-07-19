@@ -22,6 +22,17 @@ export default {
     })
     return data
   },
+  data() {
+    return {}
+  },
+  head() {
+    return {
+      title: `${this.title} || ryone9re`,
+      meta: [
+        { hid: 'description', name: 'description', content: 'description' },
+      ],
+    }
+  },
 }
 </script>
 
