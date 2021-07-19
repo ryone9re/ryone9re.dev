@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
-  async asyncData() {
-    const { data } = await axios.get(process.env.apiUrl, {
-      headers: { 'X-API-KEY': process.env.apiKey },
+  async asyncData({ $microcms }) {
+    const data = await $microcms.get({
+      endpoint: 'blog',
+      queries: { limit: 20 },
     })
     return data
   },

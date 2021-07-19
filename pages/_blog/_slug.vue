@@ -15,11 +15,10 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
-  async asyncData({ params }) {
-    const { data } = await axios.get(`${process.env.apiUrl}/${params.slug}`, {
-      headers: { 'X-API-KEY': process.env.apiKey },
+  async asyncData({ params, $microcms }) {
+    const data = await $microcms.get({
+      endpoint: `blog/${params.slug}`,
     })
     return data
   },

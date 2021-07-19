@@ -33,8 +33,16 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/dotenv',
+    'nuxt-microcms-module',
   ],
+
+  microcms: {
+    options: {
+      serviceDomain: process.env.SERVICE_DOMAIN,
+      apiKey: process.env.API_KEY,
+    },
+    mode: process.env.NODE_ENV === 'production' ? 'server' : 'all',
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -82,22 +90,20 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
-  env: {
-    apiUrl: process.env.apiUrl,
-    apiKey: process.env.apiKey,
-  },
-
   sitemap: {
     path: '/sitemap.xml',
     hostname: 'https://ryone9re.link',
     routes(callback) {
       axios
-        .get(`${process.env.apiUrl}?limit=100`, {
-          headers: { 'X-API-KEY': process.env.apiKey },
-        })
+        .get(
+          `https://${process.env.SERVICE_DOMAIN}.microcms.io/api/v1/blog?limit=100`,
+          {
+            headers: { 'X-API-KEY': process.env.API_KEY },
+          }
+        )
         .then((res) => {
-          const routes = res.data.contents.map((news) => {
-            return '/news/' + news.id
+          const routes = res.data.contents.map((content) => {
+            return `${content.id}`
           })
           callback(null, routes)
         })
