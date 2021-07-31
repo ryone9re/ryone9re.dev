@@ -1,8 +1,9 @@
 <template>
   <div class="about-container">
     <p class="about">
-      こんにちは！ ryone9reと申す者です｡ Goをメインに書いてます｡<br />
-      Javascript, Typescript, Python, Ruby, C++ も書けます｡<br />
+      こんにちは！ ryone9reと申す者です｡<br />
+      普段はweb開発(フロント･バックエンド共)やインフラエンジニアをしています｡<br />
+      言語処理の研究をしていますが､元々は生物学出身です｡<br />
       この子はcuriosityくんです｡ かわいいですね〜<br />
     </p>
     <div class="curiosity">
