@@ -7,6 +7,7 @@
         class="publishedAt"
         v-text="$dayjs(publishedAt).format('YYYY-MM-DD')"
       />
+      <!-- eslint-disable-next-line vue/no-v-html -->
       <div class="post" v-html="content"></div>
       <div class="link"><nuxt-link to="/blog" tag="a">もどる</nuxt-link></div>
     </main>
@@ -27,7 +28,7 @@ export default {
   },
   head() {
     return {
-      title: `${this.title} || ryone9re`,
+      title: `${this.title} || blog || ryone9re`,
       meta: [
         { hid: 'description', name: 'description', content: 'description' },
       ],
