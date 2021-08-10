@@ -2,8 +2,8 @@
   <div class="about-container">
     <p class="about">
       こんにちは！ ryone9reと申す者です｡<br />
-      普段はweb開発やインフラで食べています｡<br />
-      言語処理の研究をしていますが､元々は生物学出身です｡<br />
+      大学では言語処理の研究をしていますが､元々は生物学出身です｡<br />
+      web開発やインフラで生活を賄っています｡<br />
       この子はcuriosityくんです｡ かわいいですね〜<br />
     </p>
     <div class="curiosity">
