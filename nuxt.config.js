@@ -84,6 +84,10 @@ export default {
     '@nuxtjs/sitemap',
   ],
 
+  generate: {
+    fallback: true,
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
