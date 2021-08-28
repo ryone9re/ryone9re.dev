@@ -55,12 +55,6 @@ export default {
 </script>
 
 <style scoped>
-@charset "UTF-8";
-
-/***********************************
-			/* 1. BODY */
-/***********************************/
-
 * {
   margin: 0;
   padding: 0;
