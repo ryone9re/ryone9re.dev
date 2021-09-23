@@ -8,22 +8,22 @@ module.exports = {
     extend: {
       colors: {
         yellow: {
-          250: '#EDEDE8',
+          250: '#EDEDE8'
         },
         gray: {
           350: '#8697a6',
-          370: '#6FA3A6',
-        },
+          370: '#6FA3A6'
+        }
       },
       width: {
         short: '36rem',
-        medium: '48rem',
-      },
-    },
+        medium: '48rem'
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {}
   },
   plugins: [],
-  important: true,
+  important: true
 }
