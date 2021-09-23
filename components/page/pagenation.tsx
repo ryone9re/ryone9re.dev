@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import { PaginationReq } from '../../types/article'
 
-export const PageRange = (start: number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i)
+export const PageRange = (start: number, end: number): number[] => [...Array(end - start + 1)].map((_, i) => start + i)
 
-export const Pagination = ({ totalCount, urlPath }: PaginationReq) => {
+export const Pagination = ({ totalCount, urlPath }: PaginationReq): JSX.Element => {
   const PER_PAGE = 5
   const path: number = typeof urlPath === "string" ? Number(urlPath) : Number(urlPath.join(''))
   const maxPage: number = Math.ceil(totalCount / PER_PAGE)
@@ -24,7 +24,7 @@ export const Pagination = ({ totalCount, urlPath }: PaginationReq) => {
         </div>
         <div>
           <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-            {(() => {
+            {((): JSX.Element => {
               if (path > 1) {
                 return (
                   <Link href={`/blog/page/${path - 1 >= 1 ? path - 1 : 1}`}>
@@ -38,13 +38,13 @@ export const Pagination = ({ totalCount, urlPath }: PaginationReq) => {
                 )
               }
             })()}
-            {(() => {
+            {((): JSX.Element[] => {
               if (maxPage < 9) {
                 return (
                   PageRange(1, Math.ceil(totalCount / PER_PAGE)).map((num: number, index: number) => (
                     <div key={index}>
                       <Link href={`/blog/page/${num}`}>
-                        {(() => {
+                        {((): JSX.Element => {
                           if (num === path) {
                             return (
                               <a aria-current="page" className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
@@ -68,7 +68,7 @@ export const Pagination = ({ totalCount, urlPath }: PaginationReq) => {
                   PageRange(1, Math.ceil(totalCount / PER_PAGE)).map((num: number, index: number) => (
                     <div key={index}>
                       <Link href={`/blog/page/${num}`}>
-                        {(() => {
+                        {((): JSX.Element => {
                           if (num === path) {
                             return (
                               <a aria-current="page" className="z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
@@ -93,7 +93,7 @@ export const Pagination = ({ totalCount, urlPath }: PaginationReq) => {
               ...
             </span>
             {
-              (() => {
+              ((): JSX.Element => {
                 if (path < maxPage) {
                   return (
                     <Link href={ `/blog/page/${path+1 <= maxPage ? path+1 : maxPage}` }>

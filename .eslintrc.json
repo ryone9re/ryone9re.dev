@@ -11,19 +11,14 @@
     "SharedArrayBuffer": "readonly"
   },
   "plugins": [
-    "prettier",
     "@typescript-eslint"
   ],
   "extends": [
+    "next",
     "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
-    "prettier"
+    "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "prettier/prettier": [
-      2,
-      { "singleQuote": true, "parser": "typescript" }
-    ],
     "no-unused-expressions": [
       2,
       { "allowShortCircuit": true }
