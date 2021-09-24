@@ -1,3 +1,7 @@
+export type Id = {
+  id: string
+}
+
 export type Article = {
   id: number
   createdAt: string
@@ -10,6 +14,13 @@ export type Article = {
 
 export type CmsResponse = {
   contents: Article[]
+  totalCount: number
+  offset: number
+  limit: number
+}
+
+export type CmsIdResponse = {
+  contents: Id[]
   totalCount: number
   offset: number
   limit: number

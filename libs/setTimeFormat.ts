@@ -1,3 +1,3 @@
-export const setTimeFormat = (str: string): string => {
+export const SetTimeFormat = (str: string): string => {
   return str.substr(0, 10)
 }

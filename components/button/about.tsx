@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function AboutButton(): JSX.Element {
+export const AboutButton = (): JSX.Element => {
   return (
     <Link href='/about'>
       <a>

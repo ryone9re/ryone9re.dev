@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function BlogButton(): JSX.Element {
+export const BlogButton = (): JSX.Element => {
   return (
     <Link href='/blog/page/1'>
       <a>

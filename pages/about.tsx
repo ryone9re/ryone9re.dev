@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import HomeButton from '../components/button/homeButton'
+import { HomeButton } from '../components/button/homeButton'
 import profileIcon from '../public/icon.jpg'
 
 export default function Home(): JSX.Element {
@@ -9,7 +9,7 @@ export default function Home(): JSX.Element {
       <Head>
         <title>ryone9re || about</title>
       </Head>
-      <div className='bg-white p-4 rounded-md mb-4'>
+      <div className='w-4/5 md:w-auto bg-white p-4 rounded-md mb-4'>
         <Image src={profileIcon} alt='profile' className='rounded-md' />
         <div className='mt-8 h-32 w-full space-y-3'>
           <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>

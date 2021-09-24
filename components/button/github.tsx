@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function GithubButton(): JSX.Element {
+export const GithubButton = (): JSX.Element => {
   return (
     <Link href='https://github.com/ryone9re'>
       <a>
