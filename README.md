@@ -2,4 +2,4 @@
 
 # ryone9re
 
-This is my site sources.
+This is my old website sources made by nuxtjs with javascript.
