@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import Head from 'next/head'
+import Image from 'next/image'
 import HomeButton from '../components/button/homeButton'
 import profileIcon from '../public/icon.jpg'
 

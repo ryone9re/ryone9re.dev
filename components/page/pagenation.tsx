@@ -10,136 +10,124 @@ export const Pagination = ({ totalCount, urlPath }: PaginationReq): JSX.Element 
   const maxPage: number = Math.ceil(totalCount / PER_PAGE)
 
   return (
-    <div className='bg-white w-full px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6'>
-      <div className='hidden sm:flex-1 sm:flex sm:items-center sm:justify-between'>
-        <div>
-          <p className='text-sm text-gray-700'>
-            Showing
-            <span className='font-medium'> {path * 5 - 4} </span>
-            to
-            <span className='font-medium'> {path * 5 >= totalCount ? totalCount : path * 5} </span>
-            of
-            <span className='font-medium'> {totalCount} </span>
-            results
-          </p>
-        </div>
-        <div>
-          <nav
-            className='relative z-0 inline-flex rounded-md shadow-sm -space-x-px'
-            aria-label='Pagination'
-          >
-            {((): JSX.Element => {
-              if (path > 1) {
-                return (
-                  <Link href={`/blog/page/${path - 1 >= 1 ? path - 1 : 1}`}>
-                    <a className='relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'>
+    <div>
+      <div className='flex flex-col items-center my-12'>
+        <div className='flex text-gray-700'>
+          {((): JSX.Element => {
+            if (path > 1) {
+              return (
+                <Link href={`/blog/page/1`}>
+                  <a>
+                    <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
+                      <span className='sr-only'>First</span>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='100%'
+                        height='100%'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth={2}
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='feather feather-chevron-left w-6 h-6'
+                      >
+                        <polyline points='12 18 7 12 12 6' />
+                        <polyline points='16 18 11 12 16 6' />
+                      </svg>
+                    </div>
+                  </a>
+                </Link>
+              )
+            }
+          })()}
+          {((): JSX.Element => {
+            if (path > 1) {
+              return (
+                <Link href={`/blog/page/${path - 1 > 1 ? path - 1 : 1}`}>
+                  <a>
+                    <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>Previous</span>
                       <svg
-                        className='h-5 w-5'
                         xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 20 20'
-                        fill='currentColor'
-                        aria-hidden='true'
+                        width='100%'
+                        height='100%'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth={2}
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='feather feather-chevron-left w-6 h-6'
                       >
-                        <path
-                          fillRule='evenodd'
-                          d='M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z'
-                          clipRule='evenodd'
-                        />
+                        <polyline points='14 18 8 12 14 6' />
                       </svg>
-                    </a>
-                  </Link>
-                )
-              }
-            })()}
-            {((): JSX.Element[] => {
-              if (maxPage < 9) {
-                return PageRange(1, Math.ceil(totalCount / PER_PAGE)).map(
-                  (num: number, index: number) => (
-                    <div key={index}>
-                      <Link href={`/blog/page/${num}`}>
-                        {((): JSX.Element => {
-                          if (num === path) {
-                            return (
-                              <a
-                                aria-current='page'
-                                className='z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium'
-                              >
-                                {num}
-                              </a>
-                            )
-                          } else {
-                            return (
-                              <a className='bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium'>
-                                {num}
-                              </a>
-                            )
-                          }
-                        })()}
-                      </Link>
                     </div>
-                  )
-                )
-              } else {
-                return PageRange(1, Math.ceil(totalCount / PER_PAGE)).map(
-                  (num: number, index: number) => (
-                    <div key={index}>
-                      <Link href={`/blog/page/${num}`}>
-                        {((): JSX.Element => {
-                          if (num === path) {
-                            return (
-                              <a
-                                aria-current='page'
-                                className='z-10 bg-indigo-50 border-indigo-500 text-indigo-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium'
-                              >
-                                {num}
-                              </a>
-                            )
-                          } else {
-                            return (
-                              <a className='bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium'>
-                                {num}
-                              </a>
-                            )
-                          }
-                        })()}
-                      </Link>
-                    </div>
-                  )
-                )
-              }
-            })()}
-            <span className='relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700'>
-              ...
-            </span>
-            {((): JSX.Element => {
-              if (path < maxPage) {
-                return (
-                  <Link href={`/blog/page/${path + 1 <= maxPage ? path + 1 : maxPage}`}>
-                    <a
-                      href='#'
-                      className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-                    >
+                  </a>
+                </Link>
+              )
+            }
+          })()}
+          <div className='flex h-12 font-medium rounded-full bg-gray-200'>
+            <div className='w-12 h-12 flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-green-600 text-white'>
+              {path}
+            </div>
+          </div>
+          {((): JSX.Element => {
+            if (path < maxPage) {
+              return (
+                <Link href={`/blog/page/${path + 1 < maxPage ? path + 1 : maxPage}`}>
+                  <a>
+                    <div className='h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>Next</span>
                       <svg
-                        className='h-5 w-5'
                         xmlns='http://www.w3.org/2000/svg'
-                        viewBox='0 0 20 20'
-                        fill='currentColor'
-                        aria-hidden='true'
+                        width='100%'
+                        height='100%'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth={2}
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='feather feather-chevron-right w-6 h-6'
                       >
-                        <path
-                          fillRule='evenodd'
-                          d='M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z'
-                          clipRule='evenodd'
-                        />
+                        <polyline points='9 18 15 12 9 6' />
                       </svg>
-                    </a>
-                  </Link>
-                )
-              }
-            })()}
-          </nav>
+                    </div>
+                  </a>
+                </Link>
+              )
+            }
+          })()}
+          {((): JSX.Element => {
+            if (path < maxPage) {
+              return (
+                <Link href={`/blog/page/${maxPage}`}>
+                  <a>
+                    <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
+                      <span className='sr-only'>Last</span>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='100%'
+                        height='100%'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
+                        strokeWidth={2}
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        className='feather feather-chevron-left w-6 h-6'
+                      >
+                        <polyline points='8 18 13 12 8 6' />
+                        <polyline points='12 18 17 12 12 6' />
+                      </svg>
+                    </div>
+                  </a>
+                </Link>
+              )
+            }
+          })()}
         </div>
       </div>
     </div>

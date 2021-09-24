@@ -1,16 +1,17 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
 import { GetStaticProps, GetStaticPaths } from 'next'
-import { client } from '../../../libs/client'
+import Head from 'next/head'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { Pagination, PageRange } from '../../../components/page/pagenation'
-import { CmsResponse, Article } from '../../../types/article'
+import { client } from '../../../libs/client'
 import { setTimeFormat } from '../../../libs/setTimeFormat'
+import { CmsResponse, Article } from '../../../types/article'
 
 const PER_PAGE = 5
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: CmsResponse = await client.get({ endpoint: 'blog' })
-  const paths = PageRange(1, Math.ceil(data.totalCount / PER_PAGE)).map(
+  const paths: string[] = PageRange(1, Math.ceil(data.totalCount / PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
   )
   return { paths, fallback: false }
@@ -44,18 +45,22 @@ export default function Blog({
       <ul>
         {contents.map(({ id, title, createdAt }) => (
           <li key={id}>
-            <div className=' flex w-64 sm:w-short md:w-short lg:w-medium xl:w-medium bg-white shadow-2xl h-50 sm:h-40 mx-auto mt-5 mb-16 p-5'>
-              <div className='relative flex w-full'>
-                <p className='flex static text-justify text-sm sm:text-base lg:text-xl my-auto p-3'>
-                  {title}
-                </p>
-                <div className='absolute  bottom-0 right-0  inline-flex'>
-                  <p className='flex static text-justify text-xs sm:text-xs lg:text-sm my-auto'>
-                    {setTimeFormat(createdAt)}
-                  </p>
+            <Link href={`/blog/${id}`}>
+              <a>
+                <div className=' flex w-64 sm:w-short md:w-short lg:w-medium xl:w-medium bg-white shadow-2xl h-50 sm:h-40 mx-auto mt-5 mb-16 p-5'>
+                  <div className='relative flex w-full'>
+                    <p className='flex static text-justify text-sm sm:text-base lg:text-xl my-auto p-3'>
+                      {title}
+                    </p>
+                    <div className='absolute  bottom-0 right-0  inline-flex'>
+                      <p className='flex static text-justify text-xs sm:text-xs lg:text-sm my-auto'>
+                        {setTimeFormat(createdAt)}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </a>
+            </Link>
           </li>
         ))}
       </ul>
