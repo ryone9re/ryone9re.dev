@@ -3,7 +3,10 @@ import Link from 'next/link'
 export const HomeButton = (): JSX.Element => {
   return (
     <Link href='/'>
-      <a className='bg-gray-370 hover:bg-gray-700 p-1 flex items-center justify-center rounded-full h-8 sm:h-12 md:h-12 lg:h-16 xl:h-16 w-8 sm:w-12 md:w-12 lg:w-16 xl:w-16'>
+      <a
+        className='bg-gray-370 hover:bg-gray-700 p-1 flex items-center justify-center rounded-full h-8 sm:h-12 md:h-12 lg:h-16 xl:h-16 w-8 sm:w-12 md:w-12 lg:w-16 xl:w-16'
+        aria-label='To Home'
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className='h-3/4 w-3/4'

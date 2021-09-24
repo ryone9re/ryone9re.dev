@@ -3,8 +3,11 @@ import Link from 'next/link'
 export const GithubButton = (): JSX.Element => {
   return (
     <Link href='https://github.com/ryone9re'>
-      <a>
-        <button className='bg-gray-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded'>
+      <a aria-label='To Github'>
+        <button
+          className='bg-gray-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded'
+          aria-label='Github'
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             xmlnsXlink='http://www.w3.org/1999/xlink'
@@ -23,6 +26,7 @@ export const GithubButton = (): JSX.Element => {
               />
             </g>
           </svg>
+          <span>Github</span>
         </button>
       </a>
     </Link>
