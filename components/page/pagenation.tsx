@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import { PaginationReq } from '../../types/article'
 
 export const PageRange = (start: number, end: number): number[] =>

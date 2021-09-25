@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+
 import { Navigation } from '../../components/page/navigation'
 import { client } from '../../libs/client'
 import { SetTimeFormat } from '../../libs/setTimeFormat'

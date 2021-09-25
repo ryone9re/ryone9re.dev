@@ -1,4 +1,5 @@
 import Head from 'next/head'
+
 import { AboutButton } from '../components/button/about'
 import { BlogButton } from '../components/button/blog'
 import { GithubButton } from '../components/button/github'
