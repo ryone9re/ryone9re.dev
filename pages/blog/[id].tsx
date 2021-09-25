@@ -31,6 +31,7 @@ export default function Blog({ blog }: { blog: Article }): JSX.Element {
       <Head>
         <title>ryone9re || blog</title>
       </Head>
+      <Navigation />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,7 +39,6 @@ export default function Blog({ blog }: { blog: Article }): JSX.Element {
         transition={{ ease: 'backOut', duration: 0.3 }}
       >
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-          <Navigation />
           <div className='container w-full md:max-w-3xl mx-auto pt-20'>
             <div
               className='w-full px-4 md:px-6 text-xl text-gray-800 leading-normal'

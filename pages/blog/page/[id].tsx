@@ -46,6 +46,7 @@ export default function Blog({
       <Head>
         <title>ryone9re || blog</title>
       </Head>
+      <Navigation />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -53,7 +54,6 @@ export default function Blog({
         transition={{ ease: 'backOut', duration: 0.3 }}
       >
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-          <Navigation />
           <div className='container w-full md:max-w-3xl mx-auto pt-10'>
             {contents.map(({ id, title, createdAt }) => (
               <Link key={id} href={`/blog/${id}`}>
