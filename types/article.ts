@@ -28,5 +28,5 @@ export type CmsIdResponse = {
 
 export type PaginationReq = {
   totalCount: number
-  urlPath: string | string[]
+  path: number
 }

@@ -5,9 +5,8 @@ import { PaginationReq } from '../../types/article'
 export const PageRange = (start: number, end: number): number[] =>
   [...Array(end - start + 1)].map((_, i) => start + i)
 
-export const Pagination = ({ totalCount, urlPath }: PaginationReq): JSX.Element => {
+export const Pagination = ({ totalCount, path }: PaginationReq): JSX.Element => {
   const PER_PAGE = 5
-  const path: number = typeof urlPath === 'string' ? Number(urlPath) : Number(urlPath.join(''))
   const maxPage: number = Math.ceil(totalCount / PER_PAGE)
 
   return (
