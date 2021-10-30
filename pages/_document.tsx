@@ -8,6 +8,7 @@ class Document extends NextDocument<OriginProps> {
           <link rel='icon' href='/favicon.ico' />
         </Head>
         <body>
+          <script></script>
           <Main />
           <NextScript />
         </body>
