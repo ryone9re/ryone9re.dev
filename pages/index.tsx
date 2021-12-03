@@ -6,7 +6,7 @@ import { AboutButton } from '../components/button/about'
 import { BlogButton } from '../components/button/blog'
 import { GithubButton } from '../components/button/github'
 import { TopLogo } from '../components/logo/topLogo'
-import { Thing } from '../components/three/three'
+import { Thing } from '../components/three/torusKnot'
 
 export default function Home(): JSX.Element {
   return (
