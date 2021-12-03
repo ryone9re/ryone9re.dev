@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
         <Canvas className='absolute w-full h-screen flex flex-col items-center justify-center bg-yellow-250'>
           <Thing />
         </Canvas>
-        <div className='min-h-screen bg-gradient-to-b from-yellow-250 to-yellow-250 flex flex-col items-center justify-center'>
+        <div className='min-h-screen bg-gradient-to-b flex flex-col items-center justify-center'>
           <div className='absolute w-4/5 md:w-auto bg-white p-4 rounded-md mb-4'>
             <div className='flex justify-center'>
               <Image src={profileIcon} alt='profile' className='rounded-md' />
