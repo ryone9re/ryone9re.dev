@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
               <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 こんにちは！ ryone9reと申す者です｡
                 <br />
-                大学ではコンピュータサイエンスを学んでいますが､高専では生物学系学んでました｡
+                大学ではコンピュータサイエンスを学んでいますが､高専では生物学を学んでました｡
                 <br />
                 web開発やインフラでなんとか生活を賄っています｡
                 <br />
