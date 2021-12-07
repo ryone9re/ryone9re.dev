@@ -4,27 +4,40 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import { Navigation } from '../../components/page/navigation'
-import { client } from '../../libs/client'
-import { SetTimeFormat } from '../../libs/setTimeFormat'
-import { Article, CmsIdResponse } from '../../types/article'
+import { getAllPosts, getPostBySlug } from '../../libs/mdPosts'
+import mdToHtml from '../../libs/mdToHtml'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: CmsIdResponse = await client.get({ endpoint: `blog?limit=10000&fields=id` })
-  const paths: string[] = data.contents.map((content) => `/blog/${content.id}`)
-  return { paths, fallback: false }
+  const posts = getAllPosts(['slug'])
+  return {
+    paths: posts.map((post) => {
+      return {
+        params: {
+          slug: post.slug
+        }
+      }
+    }),
+    fallback: false
+  }
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = String(context.params.id)
-  const data: Article = await client.get({ endpoint: `blog`, contentId: id })
+export const getStaticProps: GetStaticProps = async (
+  { params }: any // eslint-disable-line
+) => {
+  const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'tags', 'content'])
+  const content = await mdToHtml(post.content)
+
   return {
     props: {
-      blog: data
+      post: {
+        ...post,
+        content
+      }
     }
   }
 }
 
-export default function Blog({ blog }: { blog: Article }): JSX.Element {
+export default function Blog({ post }): JSX.Element {
   const router = useRouter()
   return (
     <>
@@ -55,13 +68,13 @@ export default function Blog({ blog }: { blog: Article }): JSX.Element {
                   </button>
                 </p>
                 <h1 className='font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl'>
-                  {blog.title}
+                  {post.title}
                 </h1>
-                <p className='text-sm md:text-base font-normal text-gray-600'>
-                  {SetTimeFormat(blog.publishedAt)}
-                </p>
+                <p className='text-sm md:text-base font-normal text-gray-600'>{post.date}</p>
               </div>
-              <p className='py-6' dangerouslySetInnerHTML={{ __html: blog.content }} />
+              <div className='markdown'>
+                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              </div>
             </div>
           </div>
         </div>
