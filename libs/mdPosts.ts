@@ -52,10 +52,10 @@ export const getAllPosts = (fields: string[] = []): Item[] => {
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
     .sort((a, b) => {
-      const slugA = a.slug.toString().toLowerCase()
-      const slugB = b.slug.toString().toLowerCase()
+      const slugA = a.date
+      const slugB = b.date
 
-      if (slugA >= slugB) {
+      if (slugA <= slugB) {
         return 1
       } else {
         return -1
