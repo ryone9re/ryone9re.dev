@@ -14,9 +14,9 @@ tags: ['自作キーボード']
 
 完成したものがこちらです ↓
 
-![テンキー基盤1](https://github.com/ryone9re/ryone9re.link/tree/main/posts/自作テンキーボードの設計をしました!!!/keyboard1.jpg 'テンキー基盤1')
-![テンキー基盤2](https://github.com/ryone9re/ryone9re.link/tree/main/posts/自作テンキーボードの設計をしました!!!/keyboard1-2.jpg 'テンキー基盤1')
-![テンキー基盤3](https://github.com/ryone9re/ryone9re.link/tree/main/posts/自作テンキーボードの設計をしました!!!/keyboard1-3.jpg 'テンキー基盤1')
+![テンキー基盤1](https://github.com/ryone9re/ryone9re.link/blob/main/posts/2021-11-02/keyboard1.jpg 'テンキー基盤1')
+![テンキー基盤2](https://github.com/ryone9re/ryone9re.link/blob/main/posts/2021-11-02/keyboard1-2.jpg 'テンキー基盤2')
+![テンキー基盤3](https://github.com/ryone9re/ryone9re.link/blob/main/posts/2021-11-02/keyboard1-3.jpg 'テンキー基盤3')
 
 次回は分離型エルゴノミクスキーボードを作成しようと思っています｡
 
