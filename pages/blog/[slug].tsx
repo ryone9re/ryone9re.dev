@@ -2,10 +2,13 @@ import { motion } from 'framer-motion'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import markdownToHtml from 'zenn-markdown-html'
 
 import { Navigation } from '../../components/page/navigation'
 import { getAllPosts, getPostBySlug } from '../../libs/mdPosts'
-import mdToHtml from '../../libs/mdToHtml'
+// import mdToHtml from '../../libs/mdToHtml'
+
+import 'zenn-content-css'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = getAllPosts(['slug'])
@@ -25,7 +28,7 @@ export const getStaticProps: GetStaticProps = async (
   { params }: any // eslint-disable-line
 ) => {
   const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'tags', 'content'])
-  const content = await mdToHtml(post.content)
+  const content = await markdownToHtml(post.content)
 
   return {
     props: {
@@ -82,8 +85,8 @@ export default function Blog({ post }): JSX.Element {
                   ))}
                 </div>
               </div>
-              <div className='markdown'>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+              <div className='znc'>
+                <div className='font-sans' dangerouslySetInnerHTML={{ __html: post.content }} />
               </div>
             </div>
           </div>
