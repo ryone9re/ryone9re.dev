@@ -71,6 +71,16 @@ export default function Blog({ post }): JSX.Element {
                   {post.title}
                 </h1>
                 <p className='text-sm md:text-base font-normal text-gray-600'>{post.date}</p>
+                <div className='my-3 flex flex-wrap -m-1'>
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className='m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer'
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
               <div className='markdown'>
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
