@@ -45,7 +45,7 @@ export default function Blog({ post }): JSX.Element {
   return (
     <>
       <Head>
-        <title>ryone9re || blog</title>
+        <title>ryone9re || {post.title}</title>
       </Head>
       <Navigation />
       <motion.div
