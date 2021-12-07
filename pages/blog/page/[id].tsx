@@ -6,39 +6,27 @@ import { useRouter } from 'next/router'
 
 import { Navigation } from '../../../components/page/navigation'
 import { Pagination, PageRange } from '../../../components/page/pagenation'
-import { client } from '../../../libs/client'
-import { SetTimeFormat } from '../../../libs/setTimeFormat'
-import { CmsResponse, Article } from '../../../types/article'
+import { getAllPosts } from '../../../libs/mdPosts'
 
 const PER_PAGE = 5
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data: CmsResponse = await client.get({ endpoint: 'blog' })
-  const paths: string[] = PageRange(1, Math.ceil(data.totalCount / PER_PAGE)).map(
+  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags'])
+  const paths: string[] = PageRange(1, Math.ceil(allPosts.length / PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
   )
   return { paths, fallback: false }
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = Number(context.params.id)
-  const data: CmsResponse = await client.get({ endpoint: `blog?offset=${(id - 1) * 5}&limit=5` })
+export const getStaticProps: GetStaticProps = async () => {
+  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags'])
 
   return {
-    props: {
-      contents: data.contents,
-      totalCount: data.totalCount
-    }
+    props: { allPosts }
   }
 }
 
-export default function Blog({
-  contents,
-  totalCount
-}: {
-  contents: Article[]
-  totalCount: number
-}): JSX.Element {
+export default function Blog({ allPosts }): JSX.Element {
   const router = useRouter()
   const queryId = typeof router.query.id === 'string' ? Number(router.query.id) : 1
   return (
@@ -55,17 +43,17 @@ export default function Blog({
       >
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
           <div className='container w-full md:max-w-3xl mx-auto pt-10'>
-            {contents.map(({ id, title, createdAt }) => (
-              <Link key={id} href={`/blog/${id}`}>
+            {allPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <a>
                   <div className='flex w-64 sm:w-short md:w-short lg:w-medium xl:w-medium bg-white shadow-xl h-50 sm:h-40 mx-auto mt-5 mb-5 p-5 rounded'>
                     <div className='relative flex w-full'>
                       <p className='flex static text-justify text-sm sm:text-base lg:text-xl my-auto p-3'>
-                        {title}
+                        {post.title}
                       </p>
                       <div className='absolute  bottom-0 right-0  inline-flex'>
                         <p className='flex static text-justify text-xs sm:text-xs lg:text-sm my-auto'>
-                          {SetTimeFormat(createdAt)}
+                          {post.date}
                         </p>
                       </div>
                     </div>
@@ -74,7 +62,7 @@ export default function Blog({
               </Link>
             ))}
           </div>
-          <Pagination totalCount={totalCount} path={queryId} />
+          <Pagination totalCount={allPosts.length} path={queryId} />
         </div>
       </motion.div>
     </>
