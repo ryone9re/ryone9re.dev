@@ -43,7 +43,7 @@ export default function Blog({ allPosts }): JSX.Element {
       >
         <div className='flex flex-col items-center justify-center min-h-screen py-2'>
           <div className='container w-full md:max-w-3xl mx-auto pt-10'>
-            {allPosts.map((post) => (
+            {allPosts.slice(5 * (queryId - 1), 5 * (queryId - 1) + 5).map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`}>
                 <a>
                   <div className='flex w-64 sm:w-short md:w-short lg:w-medium xl:w-medium bg-white shadow-xl h-50 sm:h-40 mx-auto mt-5 mb-5 p-5 rounded'>
