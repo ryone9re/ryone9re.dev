@@ -121,7 +121,7 @@ let mut x = 5;
 ```Rust
 let x = 5;
 let x = x + 1;
-let x = x \* 2;
+let x = x * 2;
 ```
 
 このとき､x は 12 である｡
