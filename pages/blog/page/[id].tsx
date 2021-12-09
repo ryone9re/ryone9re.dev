@@ -11,7 +11,7 @@ import { getAllPosts } from '../../../libs/mdPosts'
 const PER_PAGE = 5
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = getAllPosts(['slug', 'title', 'date', 'tags'])
+  const allPosts = getAllPosts(['slug'])
   const paths: string[] = PageRange(1, Math.ceil(allPosts.length / PER_PAGE)).map(
     (repo) => `/blog/page/${repo}`
   )
