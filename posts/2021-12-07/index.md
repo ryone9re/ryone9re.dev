@@ -331,7 +331,7 @@ fn another_function() {
 
 ```Rust
 fn bmi_printer(height: f32, weight: f32) {
-    println!("{}", weight / (height \* height));
+    println!("{}", weight / (height * height));
 }
 ```
 
@@ -347,7 +347,7 @@ fn bmi_printer(height: f32, weight: f32) {
 
 ```Rust
 fn bmi_calculator(height: f32, weight: f32) -> f32 {
-    weight / (height \* height)
+    weight / (height * height)
 }
 ```
 
@@ -359,7 +359,7 @@ Rust では最後に評価された式の値が返される｡
 
 ```Rust
 fn bmi_calculator(height: f32, weight: f32) -> f32 {
-    weight / (height \* height);
+    weight / (height * height);
 }
 // error[E0308]: mismatched types
 // implicitly returns`()`as its body has no tail or`return`expression
@@ -397,11 +397,11 @@ let x = 5;
 if x < 10 { // <-条件式
     println!("x is under 10!");
 } else if x > 3 { // <-条件式
-    println!("x is under 10 but, x is over 3");
+    println!("x is under 10 but over 3");
 } else {
     println!("x is under 3");
 }
-// x is under 10 but, x is over 3
+// x is under 10 but over 3
 ```
 
 条件式は`bool`型でなければならない｡
