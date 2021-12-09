@@ -249,7 +249,7 @@ let tup: (i32, f64, u8) = (500, 6.4, 1);
 タプルから取り出す際は､要素をすべて取り出すようにしなければならない｡
 
 ```Rust
-let (x, y, \_) = tup;
+let (x, y, _) = tup;
 // x = 500, y = 6.4
 let (x, y) = tup;
 // error[E0308]: mismatched types
