@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { Params } from 'next/dist/server/router'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import markdownToHtml from 'zenn-markdown-html'
 
 import { Navigation } from '../../components/page/navigation'
 import { getAllPosts, getPostBySlug } from '../../libs/mdPosts'
-// import mdToHtml from '../../libs/mdToHtml'
 
 import 'zenn-content-css'
 
@@ -24,9 +24,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (
-  { params }: any // eslint-disable-line
-) => {
+export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
   const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'tags', 'content'])
   const content = await markdownToHtml(post.content)
 
