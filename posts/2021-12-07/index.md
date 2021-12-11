@@ -517,3 +517,5 @@ for s in user.iter() {
 // Hello 次郎
 // Hello 三郎
 ```
+
+次回は [#4 所有権](https://ryone9re.link/2021-12-12)になります｡
