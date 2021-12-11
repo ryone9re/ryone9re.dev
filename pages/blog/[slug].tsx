@@ -27,12 +27,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
   const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'tags', 'content'])
   const content = await markdownToHtml(post.content)
+  const wordCount = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').length
 
   return {
     props: {
       post: {
         ...post,
-        content
+        content,
+        wordCount
       }
     }
   }
@@ -72,15 +74,20 @@ export default function Blog({ post }): JSX.Element {
                   {post.title}
                 </h1>
                 <p className='text-sm md:text-base font-normal text-gray-600'>{post.date}</p>
-                <div className='my-3 flex flex-wrap -m-1'>
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className='m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 font-bold text-sm leading-loose cursor-pointer'
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <div className='my-3 flex flex-wrap -m-1 justify-between'>
+                  <div>
+                    {post.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className='m-1 bg-gray-200 hover:bg-gray-300 rounded-full px-2 py-1 font-bold text-sm leading-loose cursor-pointer'
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div>
+                    <p>文字数 : {post.wordCount}</p>
+                  </div>
                 </div>
               </div>
               <div className='znc'>
