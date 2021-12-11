@@ -27,7 +27,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: Params) => {
   const post = getPostBySlug(params.slug, ['slug', 'title', 'date', 'tags', 'content'])
   const content = await markdownToHtml(post.content)
-  const wordCount = content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').length
+  const wordCount = Math.min(
+    content.replace(/<("[^"]*"|'[^']*'|[^'">])*>/g, '').length,
+    post.content.replace(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^_`{|}~]/g, '').length
+  )
 
   return {
     props: {
