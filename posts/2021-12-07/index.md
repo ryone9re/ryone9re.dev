@@ -14,8 +14,6 @@ Rust 学習中につまずいたりなるほどと思ったポイントをアウ
 
 この記事は､上記の｢[#1 事始め](https://doc.rust-jp.rs/book-ja/ch01-00-getting-started.html)｣｢[#3 一般的なプログラミングの概念](https://doc.rust-jp.rs/book-ja/ch03-00-common-programming-concepts.html)｣についてのアウトプットです｡
 
-また､この記事では､僕の脳内で仮想的に初心者の方に説明していることを言語化したものです｡
-
 インプットとアウトプットを同時に行っているので､更新遅いです｡
 
 ※は僕のコメントです｡
