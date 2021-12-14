@@ -29,11 +29,11 @@ export default function Home(): JSX.Element {
             </div>
             <div className='mt-8 h-32 w-full space-y-3'>
               <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
-                こんにちは！ ryone9reと申す者です｡
+                こんにちは!! ryone9reと申す者です｡
                 <br />
-                大学では情報工学部ですが、高専では実は生物系学部でした。
+                大学の情報工学部に通ってますが､実は高専時代は生物系学部でした。
                 <br />
-                web開発やインフラでなんとか生活を賄っています｡
+                開発やインフラ構築で生活を賄っています｡
                 <br />
                 この子はcuriosityくんです｡ かわいいですね〜
                 <br />
