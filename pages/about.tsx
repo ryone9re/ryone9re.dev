@@ -31,7 +31,7 @@ export default function Home(): JSX.Element {
               <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 こんにちは!! ryone9reと申す者です｡
                 <br />
-                大学の情報工学部に通ってますが､実は高専時代は生物系学部でした。
+                大学の情報工学部に通ってますが､高専時代は生物系学部でした。
                 <br />
                 開発やインフラ構築で生活を賄っています｡
                 <br />
