@@ -93,7 +93,7 @@ export default function Blog({ post }): JSX.Element {
                   </div>
                 </div>
               </div>
-              <div className='znc'>
+              <div className='znc break-all'>
                 <div className='font-sans' dangerouslySetInnerHTML={{ __html: post.content }} />
               </div>
             </div>
