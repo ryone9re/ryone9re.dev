@@ -523,7 +523,7 @@ fn value_in_cents(coin: Coin) -> u32 {
 
 そして､その`state`の値をアームのコードで使用できる｡
 
-つまり､`value_in_cents(Coin::Quarter(UsState::Alaska))`と呼び出した場合､`Coin::Quarter(state)`パターンにマッチし､変数`state`は UsState enum の`Alaska`に束縛され､`println!`マクロ内で利用することができる｡ (実行結果は`State quarter from Alaska!`)
+つまり､`value_in_cents(`<br>`Coin::Quarter(UsState::Alaska))`と呼び出した場合､`Coin::Quarter(state)`パターンにマッチし､変数`state`は UsState enum の`Alaska`に束縛され､`println!`マクロ内で利用することができる｡ (実行結果は`State quarter from Alaska!`)
 
 まとめると､マッチ式の評価式は､マッチしたパターンとして､コード内で使用できる｡
 
