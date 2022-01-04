@@ -12,7 +12,7 @@ Rust 学習中につまずいたりなるほどと思ったポイントをアウ
 
 [The Rust Programming Language 日本語](https://doc.rust-jp.rs/book-ja/)
 
-この記事は､上記の｢[#4 所有権](https://doc.rust-jp.rs/book-ja/ch04-00-understanding-ownership.html)｣についてのアウトプットです｡
+この記事は､上記の｢[#5 構造体](https://doc.rust-jp.rs/book-ja/ch05-00-structs.html), [#6 Enum とパターンマッチング](https://doc.rust-jp.rs/book-ja/ch06-00-enums.html)｣についてのアウトプットです｡
 
 インプットとアウトプットを同時に行っているので､更新遅いです｡
 
