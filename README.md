@@ -19,4 +19,4 @@ This is my website sources.
 ### about
 
 - This branche.
-- For about page.
+- For about this repository.
