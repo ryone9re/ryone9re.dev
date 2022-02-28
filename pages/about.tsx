@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 import { HomeButton } from '../components/button/homeButton'
 import { Thing } from '../components/three/wireframe'
-import profileIcon from '../public/icon.jpg'
+import profileIcon from '../public/icon.png'
 
 export default function Home(): JSX.Element {
   return (
@@ -33,9 +33,10 @@ export default function Home(): JSX.Element {
                 <br />
                 大学の情報工学部に通ってますが､高専時代は物理化学を専攻してました。
                 <br />
-                開発やインフラ構築で生活を賄っています｡
+                フロント･サーバーサイドのシステム開発やインフラ構築･管理でなんとか生活を賄っています｡
                 <br />
-                この子はcuriosityくんです｡ かわいいですね〜
+                ラズパイKubernetesクラスターくん(3B+,4混在)と3Dプリンタくん(ELEGOO
+                Neptune2)がうちにいます｡かわいいですね〜
                 <br />
               </p>
             </div>
