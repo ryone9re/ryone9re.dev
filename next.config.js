@@ -4,6 +4,7 @@
 
 /* eslint @typescript-eslint/no-var-requires: "off" */
 const headers = require('./headers')
+const withPWA = require('next-pwa')
 
 const nextConfig = {
   reactStrictMode: true,
@@ -11,10 +12,13 @@ const nextConfig = {
     return [
       {
         source: '/(.*)',
-        headers,
+        headers
       }
     ]
+  },
+  pwa: {
+    dest: 'public'
   }
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)
