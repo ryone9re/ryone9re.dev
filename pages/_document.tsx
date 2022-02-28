@@ -16,7 +16,7 @@ class Document extends NextDocument<OriginProps> {
           <meta name='apple-mobile-web-app-status-bar-style' content='#000' />
           <meta name='apple-mobile-web-app-title' content='myapp' />
           <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon-180x180.png' />
-          {/* 一般 */}
+          {/* General */}
           <meta name='application-name' content='myapp' />
           <meta name='theme-color' content='#000' />
           <meta name='description' content='this is myapp' />
