@@ -17,7 +17,7 @@ class Document extends NextDocument<OriginProps> {
           <meta name='apple-mobile-web-app-title' content='myapp' />
           <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon-180x180.png' />
           {/* General */}
-          <meta name='application-name' content='myapp' />
+          <meta name='application-name' content='ryone9re.link' />
           <meta name='theme-color' content='#000' />
           <meta name='description' content='this is myapp' />
           <link rel='icon' sizes='192x192' href='/icon-192x192.png' />
