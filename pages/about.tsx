@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import { HomeButton } from '../components/button/homeButton'
 import { Thing } from '../components/three/wireframe'
@@ -35,7 +36,7 @@ export default function Home(): JSX.Element {
                 <br />
                 フロント･サーバーサイドのシステム開発やインフラ構築･管理でなんとか生活を賄っています｡
                 <br />
-                推しは<a href="https://mars.nasa.gov/msl/home/">Curiosity</a>くんです。かわいいですね〜
+                推しは<Link href="https://mars.nasa.gov/msl/home/"><a>Curiosity</a></Link>くんです。かわいいですね〜
                 <br />
               </p>
             </div>
