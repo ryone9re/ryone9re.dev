@@ -35,8 +35,7 @@ export default function Home(): JSX.Element {
                 <br />
                 フロント･サーバーサイドのシステム開発やインフラ構築･管理でなんとか生活を賄っています｡
                 <br />
-                ラズパイKubernetesクラスターくん(3B+,4混在)と3Dプリンタくん(ELEGOO
-                Neptune2)がうちにいます｡かわいいですね〜
+                推しは<a href="https://mars.nasa.gov/msl/home/">Curiosity</a>くんです。かわいいですね〜
                 <br />
               </p>
             </div>
