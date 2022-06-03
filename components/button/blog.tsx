@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const BlogButton = (): JSX.Element => {
   return (
-    <Link href='/blog/page/1'>
+    <Link href='/blog/page/1' passHref>
       <a aria-label='To Blog'>
         <button
           className='bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded'

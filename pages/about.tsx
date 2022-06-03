@@ -40,7 +40,7 @@ export default function Home(): JSX.Element {
               </p>
               <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 推しは
-                <Link href='https://mars.nasa.gov/msl/home/'>
+                <Link href='https://mars.nasa.gov/msl/home/' passHref>
                   <a>Curiosity</a>
                 </Link>
                 くんです。かわいいですね〜

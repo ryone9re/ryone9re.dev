@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const HomeButton = (): JSX.Element => {
   return (
-    <Link href='/'>
+    <Link href='/' passHref>
       <a
         className='bg-gray-370 hover:bg-gray-700 p-1 flex items-center justify-center rounded-full h-8 sm:h-12 md:h-12 lg:h-16 xl:h-16 w-8 sm:w-12 md:w-12 lg:w-16 xl:w-16'
         aria-label='To Home'

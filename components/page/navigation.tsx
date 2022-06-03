@@ -8,14 +8,14 @@ export const Navigation = (): JSX.Element => {
     <nav id='header' className='fixed w-full z-10 top-0 bg-white'>
       <div className='w-full md:max-w-4xl mx-auto flex flex-wrap items-center justify-between mt-0 py-3'>
         <div className='pl-4'>
-          <Link href='/'>
+          <Link href='/' passHref>
             <a className='text-gray-900 no-underline hover:no-underline font-extrabold text-xl'>
               ryone9re
             </a>
           </Link>
         </div>
         <div className='block lg:hidden pr-4'>
-          <Link href='/'>
+          <Link href='/' passHref>
             <a>
               <button
                 id='nav-toggle'
@@ -39,21 +39,21 @@ export const Navigation = (): JSX.Element => {
         >
           <ul className='list-reset lg:flex justify-end flex-1 items-center'>
             <li className='mr-3'>
-              <Link href='/'>
+              <Link href='/' passHref>
                 <a className='inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4'>
                   Home
                 </a>
               </Link>
             </li>
             <li className='mr-3'>
-              <Link href='/about'>
+              <Link href='/about' passHref>
                 <a className='inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4'>
                   About
                 </a>
               </Link>
             </li>
             <li className='mr-3'>
-              <Link href='/blog/page/1'>
+              <Link href='/blog/page/1' passHref>
                 <a className='inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4'>
                   Blog
                 </a>

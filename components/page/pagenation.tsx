@@ -16,7 +16,7 @@ export const Pagination = ({ totalCount, path }: PaginationReq): JSX.Element => 
           {((): JSX.Element => {
             if (path > 1) {
               return (
-                <Link href={`/blog/page/1`}>
+                <Link href={`/blog/page/1`} passHref>
                   <a>
                     <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>First</span>
@@ -44,7 +44,7 @@ export const Pagination = ({ totalCount, path }: PaginationReq): JSX.Element => 
           {((): JSX.Element => {
             if (path > 1) {
               return (
-                <Link href={`/blog/page/${path - 1 > 1 ? path - 1 : 1}`}>
+                <Link href={`/blog/page/${path - 1 > 1 ? path - 1 : 1}`} passHref>
                   <a>
                     <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>Previous</span>
@@ -76,7 +76,7 @@ export const Pagination = ({ totalCount, path }: PaginationReq): JSX.Element => 
           {((): JSX.Element => {
             if (path < maxPage) {
               return (
-                <Link href={`/blog/page/${path + 1 < maxPage ? path + 1 : maxPage}`}>
+                <Link href={`/blog/page/${path + 1 < maxPage ? path + 1 : maxPage}`} passHref>
                   <a>
                     <div className='h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>Next</span>
@@ -103,7 +103,7 @@ export const Pagination = ({ totalCount, path }: PaginationReq): JSX.Element => 
           {((): JSX.Element => {
             if (path < maxPage) {
               return (
-                <Link href={`/blog/page/${maxPage}`}>
+                <Link href={`/blog/page/${maxPage}`} passHref>
                   <a>
                     <div className='h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer'>
                       <span className='sr-only'>Last</span>

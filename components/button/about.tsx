@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const AboutButton = (): JSX.Element => {
   return (
-    <Link href='/about'>
+    <Link href='/about' passHref>
       <a aria-label='To About'>
         <button
           className='bg-red-400 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded'

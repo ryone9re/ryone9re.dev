@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export const GithubButton = (): JSX.Element => {
   return (
-    <Link href='https://github.com/ryone9re'>
+    <Link href='https://github.com/ryone9re' passHref>
       <a aria-label='To Github'>
         <button
           className='bg-gray-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded'
