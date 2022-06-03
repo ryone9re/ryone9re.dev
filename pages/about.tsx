@@ -31,13 +31,19 @@ export default function Home(): JSX.Element {
             <div className='mt-8 h-32 w-full space-y-3'>
               <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 こんにちは!! ryone9reと申す者です｡
-                <br />
+              </p>
+              <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 大学の情報工学部に通ってますが､高専時代は物理化学を専攻してました。
-                <br />
+              </p>
+              <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
                 フロント･サーバーサイドのシステム開発やインフラ構築･管理でなんとか生活を賄っています｡
-                <br />
-                推しは<Link href="https://mars.nasa.gov/msl/home/"><a>Curiosity</a></Link>くんです。かわいいですね〜
-                <br />
+              </p>
+              <p className='font-sans text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg'>
+                推しは
+                <Link href='https://mars.nasa.gov/msl/home/'>
+                  <a>Curiosity</a>
+                </Link>
+                くんです。かわいいですね〜
               </p>
             </div>
             <div className='flex justify-center'>
