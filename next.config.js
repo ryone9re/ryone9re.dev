@@ -1,24 +1,8 @@
-/**
- * @type {import('next').NextConfig}
- **/
-
-/* eslint @typescript-eslint/no-var-requires: "off" */
-const headers = require('./headers')
-const withPWA = require('next-pwa')
-
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers
-      }
-    ]
+  experimental: {
+    appDir: true,
   },
-  pwa: {
-    dest: 'public'
-  }
 }
 
-module.exports = withPWA(nextConfig)
+module.exports = nextConfig
