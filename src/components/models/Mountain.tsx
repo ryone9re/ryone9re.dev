@@ -32,13 +32,13 @@ function Mount1() {
   const meshRef = useRef<MeshProps>(null);
 
   const shape = new Shape([
-    new Vector2(-30, 0),
+    new Vector2(-35, 0),
     new Vector2(-11, 19),
     new Vector2(-5, 16),
     new Vector2(0, 18),
     new Vector2(7, 14),
     new Vector2(13, 15),
-    new Vector2(30, 0)
+    new Vector2(35, 0)
   ]);
   const geometry = new ShapeGeometry(shape);
 
