@@ -1,13 +1,64 @@
 'use client';
 
+import { Variants, motion } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
+
+const itemVariants: Variants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 300, damping: 24 }
+  },
+  closed: { opacity: 0, y: 20, transition: { duration: 0.2 } }
+};
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const buttonRef = useRef<HTMLLabelElement>(null);
+  const dropdownRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, dropdownRef, buttonRef]);
+
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <>
-      <header className='navbar bg-base-100'>
-        <div className='dropdown lg:hidden'>
-          <label tabIndex={0} className='btn-ghost btn-square btn'>
+      <header className='navbar z-10 bg-base-100'>
+        <motion.nav
+          className='dropdown lg:hidden'
+          initial={false}
+          animate={isOpen ? 'open' : 'closed'}
+        >
+          <label
+            tabIndex={0}
+            ref={buttonRef}
+            className='btn-ghost btn-square btn'
+            onClick={() => setIsOpen(!isOpen)}
+          >
             <svg
               xmlns='http://www.w3.org/2000/svg'
               fill='none'
@@ -22,24 +73,45 @@ export default function Header() {
               ></path>
             </svg>
           </label>
-          <ul
+          <motion.ul
             tabIndex={0}
+            ref={dropdownRef}
             className='dropdown-content menu mt-3 w-52 rounded-md bg-base-300 p-2 shadow-lg'
+            variants={{
+              open: {
+                clipPath: 'inset(0% 0% 0% 0% round 10px)',
+                transition: {
+                  type: 'spring',
+                  bounce: 0,
+                  duration: 0.7,
+                  delayChildren: 0.3,
+                  staggerChildren: 0.05
+                }
+              },
+              closed: {
+                clipPath: 'inset(10% 50% 90% 50% round 10px)',
+                transition: {
+                  type: 'spring',
+                  bounce: 0,
+                  duration: 0.3
+                }
+              }
+            }}
           >
-            <li>
+            <motion.li variants={itemVariants}>
               <Link href='/'>Home</Link>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li variants={itemVariants}>
               <Link href='/about'>About</Link>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li variants={itemVariants}>
               <Link href='/blog'>Blog</Link>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li variants={itemVariants}>
               <Link href='/works'>Works</Link>
-            </li>
-          </ul>
-        </div>
+            </motion.li>
+          </motion.ul>
+        </motion.nav>
         <div className='flex-1'>
           <Link href='/' className='btn-ghost btn text-xl normal-case'>
             ryone9re

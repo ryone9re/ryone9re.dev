@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className='footer items-center justify-center bg-neutral p-4 text-neutral-content'>
+    <footer className='footer z-10 items-center justify-center bg-neutral p-4 text-neutral-content'>
       <div className='grid-flow-col items-center'>
         <svg
           width='36'

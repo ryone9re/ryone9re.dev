@@ -14,7 +14,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body>
         <div className='flex min-h-screen flex-col items-center'>
           <Header />
-          <div className='flex-grow'>{children}</div>
+          <div className='flex flex-grow flex-col'>{children}</div>
           <Footer />
         </div>
       </body>

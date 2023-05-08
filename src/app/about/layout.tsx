@@ -1,32 +1,30 @@
 'use client';
 
-import { SNSIcons } from '@/components/Icons';
-import { Iam } from '@/components/models/Iam';
 import { Mountains } from '@/components/models/Mountain';
-import { Rain } from '@/components/models/Rain';
+import { Sun } from '@/components/models/Sun';
 import { motion } from 'framer-motion';
+import { PropsWithChildren } from 'react';
 
-export default function Page() {
+export default function Layout({ children }: PropsWithChildren) {
   return (
     <>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 2 }}
       >
-        <Mountains />
-        <Rain />
+        <Sun />
       </motion.div>
+      <Mountains />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 3 }}
-        className='relative flex flex-grow flex-col items-center justify-center space-y-4'
+        transition={{ duration: 0.5 }}
+        className='p-4'
       >
-        <Iam />
-        <SNSIcons />
+        {children}
       </motion.main>
     </>
   );

@@ -1,9 +1,19 @@
 'use client';
 
-export default function Home() {
+import { motion } from 'framer-motion';
+
+export default function Page() {
   return (
     <>
-      <main className='p-4'>blogs</main>
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className='p-4'
+      >
+        blog
+      </motion.main>
     </>
   );
 }

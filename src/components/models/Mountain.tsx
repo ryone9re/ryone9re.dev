@@ -1,14 +1,15 @@
-import { OrbitControls } from '@react-three/drei';
+'use client';
+
 import { Canvas, MeshProps } from '@react-three/fiber';
 import { motion } from 'framer-motion-3d';
 import { useRef } from 'react';
 import {
   BufferGeometry,
   Color,
+  ExtrudeGeometry,
   Float32BufferAttribute,
   MeshBasicMaterial,
   Shape,
-  ShapeGeometry,
   Vector2
 } from 'three';
 
@@ -28,7 +29,12 @@ function generateVertexColors(geometry: BufferGeometry, baseColor: number) {
   geometry.setAttribute('color', colorAttribute);
 }
 
-function Mount1() {
+const extrudeSettings = {
+  depth: 1,
+  bevelEnabled: false
+};
+
+function MountainBehind() {
   const meshRef = useRef<MeshProps>(null);
 
   const shape = new Shape([
@@ -40,14 +46,27 @@ function Mount1() {
     new Vector2(13, 15),
     new Vector2(35, 0)
   ]);
-  const geometry = new ShapeGeometry(shape);
 
-  const material = new MeshBasicMaterial({ color: 0x6272a4 });
+  const geometry = new ExtrudeGeometry(shape, extrudeSettings);
+  generateVertexColors(geometry, 0x6272a4);
 
-  return <motion.mesh ref={meshRef} geometry={geometry} material={material} />;
+  const material = new MeshBasicMaterial({ vertexColors: true });
+
+  return (
+    <>
+      <motion.group
+        initial={{ x: -20, y: -20 }}
+        animate={{ x: 0, y: 0 }}
+        exit={{ x: -20, y: -20 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.mesh ref={meshRef} geometry={geometry} material={material} position={[0, 0, 0]} />
+      </motion.group>
+    </>
+  );
 }
 
-function Mount2() {
+function MountainFront() {
   const meshRef = useRef<MeshProps>(null);
 
   const shape = new Shape([
@@ -59,21 +78,45 @@ function Mount2() {
     new Vector2(13, 14),
     new Vector2(30, 0)
   ]);
-  const geometry = new ShapeGeometry(shape);
 
-  const material = new MeshBasicMaterial({ color: 0x44475a });
+  const geometry = new ExtrudeGeometry(shape, extrudeSettings);
+  generateVertexColors(geometry, 0x44475a);
 
-  return <motion.mesh ref={meshRef} geometry={geometry} material={material} />;
+  const material = new MeshBasicMaterial({ vertexColors: true });
+
+  return (
+    <>
+      <motion.group
+        initial={{ x: 20, y: -20 }}
+        animate={{ x: 0, y: 0 }}
+        exit={{ x: 20, y: -20 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.mesh ref={meshRef} geometry={geometry} material={material} position={[0, 0, 1]} />
+      </motion.group>
+    </>
+  );
 }
 
 export function Mountains() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 0, 30] }}>
-        <Mount1 />
-        <Mount2 />
-        <OrbitControls />
+    <>
+      <Canvas
+        camera={{ position: [0, 0, 50] }}
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1
+        }}
+      >
+        <group position={[0, -35, 0]}>
+          <MountainBehind />
+          <MountainFront />
+        </group>
       </Canvas>
-    </div>
+    </>
   );
 }
