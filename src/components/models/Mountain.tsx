@@ -9,9 +9,9 @@ const Mount1 = () => {
 
   const shape = new Shape([
     new Vector2(-30, 0),
-    new Vector2(-13, 19),
-    new Vector2(-5, 15),
-    new Vector2(0, 17),
+    new Vector2(-11, 19),
+    new Vector2(-5, 16),
+    new Vector2(0, 18),
     new Vector2(7, 12),
     new Vector2(13, 15),
     new Vector2(30, 0)
