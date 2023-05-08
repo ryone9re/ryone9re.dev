@@ -12,18 +12,18 @@ function FloatingText({ fontSize }: { fontSize?: number }) {
 export function Iam() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const calculateFontSize = () => {
-    const aspectRatio = window.innerHeight / window.innerWidth;
-    const baseSize = Math.min(window.innerWidth, window.innerHeight);
-    if (aspectRatio > 1) {
-      return baseSize * 0.01;
-    }
-    return baseSize * 0.005;
-  };
-
-  const [fontSize, setFontSize] = useState(calculateFontSize());
+  const [fontSize, setFontSize] = useState<number>();
 
   useEffect(() => {
+    function calculateFontSize() {
+      const aspectRatio = window.innerHeight / window.innerWidth;
+      const baseSize = Math.min(window.innerWidth, window.innerHeight);
+      if (aspectRatio > 1) {
+        return baseSize * 0.01;
+      }
+      return baseSize * 0.005;
+    }
+
     function handleResize() {
       setFontSize(calculateFontSize());
     }
