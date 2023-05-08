@@ -1,5 +1,5 @@
-import { GitHub } from './Github';
-import { Twitter } from './Twitter';
+import { GitHub } from '@/components/Icons/GitHub';
+import { Twitter } from '@/components/Icons/Twitter';
 
 export const SNSIcons = () => {
   return (
