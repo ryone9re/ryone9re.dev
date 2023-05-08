@@ -2,9 +2,9 @@
 
 const nextConfig = {
   experimental: {
-    appDir: true,
     typedRoutes: true
-  }
+  },
+  transpilePackages: ['@react-three/postprocessing']
 };
 
 module.exports = nextConfig;
