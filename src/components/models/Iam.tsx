@@ -24,6 +24,8 @@ export function Iam() {
       return baseSize * 0.005;
     }
 
+    setFontSize(calculateFontSize());
+
     function handleResize() {
       setFontSize(calculateFontSize());
     }
@@ -39,20 +41,20 @@ export function Iam() {
       <Canvas ref={canvasRef} style={{ width: '100vw' }}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <motion.group
-          animate={{
-            x: [-0.5, 0.5, -0.5, 0.5, -0.5],
-            y: [-0.5, 0.5, 0.5, -0.5, -0.5]
-          }}
-          transition={{
-            duration: 10,
-            ease: 'easeInOut',
-            times: [0, 0.2, 0.5, 0.8, 1],
-            repeat: Infinity
-          }}
-        >
-          <FloatingText fontSize={fontSize} />
-        </motion.group>
+        {fontSize && (
+          <motion.group
+            animate={{
+              x: [0, 0.5, -0.5, 0.5, -0.5, 0],
+              y: [0, 0.5, 0.5, -0.5, -0.5, 0]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity
+            }}
+          >
+            <FloatingText fontSize={fontSize} />
+          </motion.group>
+        )}
       </Canvas>
     </>
   );
