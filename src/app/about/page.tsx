@@ -1,12 +1,12 @@
 'use client';
 
-import { BezierCurveExample } from '@/components/models/Mountain';
+import { Mountains } from '@/components/models/Mountain';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
     <>
-      <BezierCurveExample />
+      <Mountains />
       <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

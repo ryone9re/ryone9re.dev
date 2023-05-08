@@ -15,6 +15,7 @@
     "autoprefixer": "latest",
     "daisyui": "latest",
     "framer-motion": "latest",
+    "framer-motion-3d": "latest",
     "next": "latest",
     "postcss": "latest",
     "react": "latest",
