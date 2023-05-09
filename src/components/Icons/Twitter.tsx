@@ -1,8 +1,8 @@
 export const Twitter = () => {
   return (
     <>
-      <a href='https://twitter.com/ryone9re'>
-        <button className='btn-outline btn-circle btn'>
+      <a href='https://twitter.com/ryone9re' title='Link to my Twitter profile'>
+        <button className='btn-outline btn-circle btn' aria-label='Link to my Twitter profile'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6'

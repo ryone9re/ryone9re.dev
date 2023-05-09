@@ -1,4 +1,4 @@
-import { BackButton } from '@/components/Buttons/BackButton';
+import { BackButton } from '@/components/buttons/BackButton';
 import Image from 'next/image';
 
 export const metadata = {

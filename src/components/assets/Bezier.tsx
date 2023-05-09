@@ -1,6 +1,5 @@
 'use client';
 
-import { OrbitControls } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
 import { useRef } from 'react';
 import { Mesh, MeshBasicMaterial, QuadraticBezierCurve3, TubeGeometry, Vector3 } from 'three';
@@ -22,13 +21,22 @@ const BezierObject = () => {
 
 export function BezierCurve() {
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <Canvas camera={{ position: [0, 5, 20] }}>
+    <>
+      <Canvas
+        camera={{ position: [0, 0, 20] }}
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',
+          zIndex: -1
+        }}
+      >
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <BezierObject />
-        <OrbitControls />
       </Canvas>
-    </div>
+    </>
   );
 }

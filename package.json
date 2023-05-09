@@ -9,9 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "latest",
     "@react-three/drei": "latest",
     "@react-three/fiber": "latest",
     "@types/three": "latest",
+    "@vercel/postgres": "latest",
     "autoprefixer": "latest",
     "daisyui": "latest",
     "framer-motion": "latest",
@@ -21,17 +23,20 @@
     "react": "latest",
     "react-dom": "latest",
     "tailwindcss": "latest",
-    "three": "latest"
+    "three": "latest",
+    "zod": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "dotenv-cli": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
     "eslint-config-prettier": "latest",
     "prettier": "latest",
     "prettier-plugin-tailwindcss": "latest",
+    "prisma": "latest",
     "typescript": "latest"
   }
 }

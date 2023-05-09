@@ -1,9 +1,9 @@
 'use client';
 
-import { SNSIcons } from '@/components/Icons';
-import { Iam } from '@/components/models/Iam';
-import { Mountains } from '@/components/models/Mountain';
-import { Rain } from '@/components/models/Rain';
+import { Iam } from '@/components/assets/Iam';
+import { Mountains } from '@/components/assets/Mountain';
+import { Rain } from '@/components/assets/Rain';
+import { SNSIcons } from '@/components/icons';
 import { motion } from 'framer-motion';
 
 export default function Page() {
