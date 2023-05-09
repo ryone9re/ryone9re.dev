@@ -47,7 +47,7 @@ export default function Header() {
 
   return (
     <>
-      <header className='navbar z-10 bg-base-100'>
+      <header className='navbar sticky top-0 z-10 bg-base-100'>
         <motion.nav
           className='dropdown lg:hidden'
           initial={false}
