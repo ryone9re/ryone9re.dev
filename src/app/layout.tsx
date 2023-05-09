@@ -1,8 +1,8 @@
 import Footer from '@/app/Footer';
 import Header from '@/app/Header';
+import { Providers } from '@/app/Providers';
 import '@/app/globals.css';
 import { PropsWithChildren } from 'react';
-import { Providers } from './providers';
 
 export const metadata = {
   title: 'ryone9re',
