@@ -7,7 +7,7 @@ export const GitHub = () => {
             xmlns='http://www.w3.org/2000/svg'
             className='h-6 w-6'
             fill='none'
-            viewBox='-1 -1 98 98'
+            viewBox='-1 -1 100 100'
             stroke='currentColor'
           >
             <path
