@@ -1,8 +1,10 @@
+import { prisma } from '@/infrastructure/prismaClient';
+import { PostRepository } from '@/infrastructure/repositories/PostRepository';
 import { PostService } from '@/server/services/post';
 import { validateCreateUpdatePost, validatePostId } from '@/server/services/post/validation';
 import { NextResponse, type NextRequest } from 'next/server';
 
-const postService = new PostService();
+const postService = new PostService(new PostRepository(prisma));
 
 export async function getAllController() {
   const posts = await postService.getPosts();

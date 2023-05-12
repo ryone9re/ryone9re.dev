@@ -1,13 +1,12 @@
 import { Post } from '@/domain/entities/Post';
 import { IPostRepository } from '@/domain/repositories/IPostRepository';
 import { CreatePostDTO } from '@/dto/Post/CreatePostDTO';
-import { PostRepository } from '@/infrastructure/repositories/PostRepository';
 
 export class PostService {
   #postRepositry: IPostRepository;
 
-  constructor() {
-    this.#postRepositry = new PostRepository();
+  constructor(postRepository: IPostRepository) {
+    this.#postRepositry = postRepository;
   }
 
   async getPosts(): Promise<Post[]> {

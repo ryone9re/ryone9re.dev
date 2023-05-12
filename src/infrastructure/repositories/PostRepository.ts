@@ -2,13 +2,12 @@ import { Post } from '@/domain/entities/Post';
 import { IPostRepository } from '@/domain/repositories/IPostRepository';
 import { CreatePostDTO } from '@/dto/Post/CreatePostDTO';
 import { UpdatePostDTO } from '@/dto/Post/UpdatePostDTO';
-import { prisma } from '@/infrastructure/prismaClient';
 import { PrismaClient } from '@prisma/client';
 
 export class PostRepository implements IPostRepository {
   #client: PrismaClient;
 
-  constructor() {
+  constructor(prisma: PrismaClient) {
     this.#client = prisma;
   }
 
