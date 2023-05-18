@@ -28,18 +28,16 @@ function Card({ id, title, thumbnail, content, createdAt, updatedAt }: BlogCardP
 
   return (
     <>
-      <div className='card bg-neutral px-2 py-4 shadow-xl'>
-        <figure>
-          <p className='text-9xl'>{unicodeSubstring(thumbnail)}</p>
-        </figure>
-        <div className='card-body'>
-          <h2 className='card-title'>{title}</h2>
-          <p className='whitespace-normal break-words'>{summary}</p>
-          <div className='card-actions justify-end'>
-            <Link href={`/blog/${id}`}>
-              <button className='btn-primary btn'>MORE</button>
-            </Link>
-          </div>
+      <figure>
+        <p className='text-9xl'>{unicodeSubstring(thumbnail)}</p>
+      </figure>
+      <div className='card-body'>
+        <h2 className='card-title'>{title}</h2>
+        <p className='whitespace-normal break-words'>{summary}</p>
+        <div className='card-actions justify-end'>
+          <Link href={`/blog/${id}`}>
+            <button className='btn-primary btn'>MORE</button>
+          </Link>
         </div>
       </div>
     </>
@@ -49,7 +47,12 @@ function Card({ id, title, thumbnail, content, createdAt, updatedAt }: BlogCardP
 export function BlogCard(props: BlogCardProps) {
   return (
     <>
-      <motion.div initial={{ y: 20 }} animate={{ y: 0 }} transition={{ duration: 0.5 }}>
+      <motion.div
+        initial={{ y: 20 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className='card min-h-full bg-neutral px-2 py-4 shadow-xl'
+      >
         <Card {...props} />
       </motion.div>
     </>

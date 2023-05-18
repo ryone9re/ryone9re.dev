@@ -29,7 +29,11 @@ export default async function Page() {
 
   return (
     <>
-      <div className='gap mb-4 grid w-5/6 grid-cols-1 gap-4 md:grid-cols-2'>
+      <div
+        className={`gap mb-4 grid w-5/6 grid-cols-1 gap-4 md:grid-cols-2 grid-rows-${Math.ceil(
+          posts.length / 2
+        )}`}
+      >
         {posts.map((post) => {
           return (
             <BlogCard
