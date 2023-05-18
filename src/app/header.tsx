@@ -1,7 +1,6 @@
 'use client';
 
 import { Variants, motion } from 'framer-motion';
-import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -45,8 +44,6 @@ export default function Header() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
-
-  const { status } = useSession();
 
   return (
     <>
@@ -113,11 +110,6 @@ export default function Header() {
             <motion.li variants={itemVariants}>
               <Link href='/resume'>Resume</Link>
             </motion.li>
-            {status === 'authenticated' && (
-              <motion.li variants={itemVariants}>
-                <button onClick={() => signOut({ callbackUrl: '/' })}>Logout</button>
-              </motion.li>
-            )}
           </motion.ul>
         </motion.nav>
         <div className='flex-1'>
