@@ -29,7 +29,8 @@ describe('post service test', () => {
       deletePost: jest.fn(),
       getPostById: jest.fn(),
       getPosts: jest.fn(),
-      getPublicPosts: jest.fn()
+      getPublicPosts: jest.fn(),
+      getPostsWithPagination: jest.fn()
     };
     postService = new PostService(postRepository);
   });
@@ -67,5 +68,20 @@ describe('post service test', () => {
 
     expect(result).toEqual(expected);
     expect(postRepository.getPostById).toBeCalledWith(id);
+  });
+
+  it('should get posts with pagination', async () => {
+    const expected: { posts: Post[]; currentPage: number; maxPage: number } = {
+      posts: [generatePostData()],
+      currentPage: 1,
+      maxPage: 1
+    };
+
+    postRepository.getPostsWithPagination.mockResolvedValueOnce(expected);
+
+    const result = await postService.getPostsWithPagination(1);
+
+    expect(result).toEqual(expected);
+    expect(postRepository.getPostsWithPagination).toBeCalled();
   });
 });

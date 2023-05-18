@@ -9,4 +9,5 @@ export interface IPostRepository {
   getPostById(postId: string): Promise<Post>;
   getPosts(): Promise<Post[]>;
   getPublicPosts(): Promise<Post[]>;
+  getPostsWithPagination(page: number): Promise<{ posts: Post[]; hasNext: boolean }>;
 }

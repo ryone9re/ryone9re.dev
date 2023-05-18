@@ -12,7 +12,7 @@ export default function Page() {
         transition={{ duration: 0.5 }}
         className='p-4'
       >
-        works
+        resume
       </motion.main>
     </>
   );

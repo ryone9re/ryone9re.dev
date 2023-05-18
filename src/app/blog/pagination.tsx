@@ -1,13 +1,14 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 type PaginationProps = {
-  maxPage: number;
+  hasNext: boolean;
 };
 
-export function Pagination({ maxPage }: PaginationProps) {
+export function Pagination({ hasNext }: PaginationProps) {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   const page = searchParams.get('p');
 
@@ -22,9 +23,23 @@ export function Pagination({ maxPage }: PaginationProps) {
   return (
     <>
       <div className='btn-group'>
-        {currentPage > 1 && <button className='btn'>«</button>}
+        {2 < currentPage ? (
+          <button className='btn' onClick={() => router.push(`/blog?p=${currentPage - 1}`)}>
+            «
+          </button>
+        ) : (
+          1 < currentPage && (
+            <button className='btn' onClick={() => router.push('/blog')}>
+              «
+            </button>
+          )
+        )}
         <button className='btn'>{`PAGE ${currentPage}`}</button>
-        {currentPage < maxPage && <button className='btn'>»</button>}
+        {hasNext && (
+          <button className='btn' onClick={() => router.push(`/blog?p=${currentPage + 1}`)}>
+            »
+          </button>
+        )}
       </div>
     </>
   );

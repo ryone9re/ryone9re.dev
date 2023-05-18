@@ -20,4 +20,8 @@ export class PostService {
   async getPostById(id: string): Promise<Post> {
     return await this.#postRepositry.getPostById(id);
   }
+
+  async getPostsWithPagination(page: number): Promise<{ posts: Post[]; hasNext: boolean }> {
+    return await this.#postRepositry.getPostsWithPagination(page);
+  }
 }

@@ -40,3 +40,21 @@ export function validatePostId(
 
   return { valid: false, errors: result.error.errors };
 }
+
+export function validatePageNumber(data: unknown):
+  | {
+      valid: true;
+      data: number;
+    }
+  | {
+      valid: false;
+      errors: z.ZodIssue[];
+    } {
+  const result = z.string().regex(/^\d+$/).transform(Number).safeParse(data);
+
+  if (result.success) {
+    return { valid: true, data: result.data };
+  }
+
+  return { valid: false, errors: result.error.errors };
+}

@@ -1,4 +1,4 @@
-import { Post } from '@/domain/entities/Post';
+import { Post, PostConfig } from '@/domain/entities/Post';
 import { IPostRepository } from '@/domain/repositories/IPostRepository';
 import { CreatePostDTO } from '@/dto/Post/CreatePostDTO';
 import { UpdatePostDTO } from '@/dto/Post/UpdatePostDTO';
@@ -97,6 +97,32 @@ export class PostRepository implements IPostRepository {
       });
 
       return posts;
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  }
+
+  async getPostsWithPagination(page = 1): Promise<{ posts: Post[]; hasNext: boolean }> {
+    const skip = PostConfig.maxPostsPerRequest * (page - 1);
+
+    try {
+      const posts = await this.#client.post.findMany({
+        take: PostConfig.maxPostsPerRequest + 1,
+        skip: skip,
+        where: {
+          visible: true
+        },
+        orderBy: {
+          id: 'desc'
+        }
+      });
+
+      const hasNext = posts.length > PostConfig.maxPostsPerRequest;
+
+      const truncatedPosts = posts.slice(0, PostConfig.maxPostsPerRequest);
+
+      return { posts: truncatedPosts, hasNext };
     } catch (e) {
       console.log(e);
       throw e;

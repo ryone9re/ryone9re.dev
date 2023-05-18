@@ -1,20 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, Suspense } from 'react';
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
     <>
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5 }}
-        className='flex flex-col items-center p-4'
-      >
-        {children}
-      </motion.main>
+      {/* TODO いい感じのおしゃれな円(3d)を回す */}
+      <Suspense>{children}</Suspense>
     </>
   );
 }

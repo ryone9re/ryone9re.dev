@@ -9,7 +9,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <div className='card'>
+      <div className='card items-center'>
         <figure>
           <Image src='/myicon.png' alt='ryone9reのアイコン' width={300} height={300} />
         </figure>

@@ -27,3 +27,8 @@ export class Post implements PostType {
     this.visible = visible;
   }
 }
+
+export const PostConfig = {
+  maxPostsPerRequest: 5
+};
+Object.freeze(PostConfig);
