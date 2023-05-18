@@ -71,10 +71,9 @@ describe('post service test', () => {
   });
 
   it('should get posts with pagination', async () => {
-    const expected: { posts: Post[]; currentPage: number; maxPage: number } = {
+    const expected: { posts: Post[]; hasNext: boolean } = {
       posts: [generatePostData()],
-      currentPage: 1,
-      maxPage: 1
+      hasNext: false
     };
 
     postRepository.getPostsWithPagination.mockResolvedValueOnce(expected);
