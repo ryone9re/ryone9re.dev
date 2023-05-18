@@ -6,6 +6,7 @@ export type PostType = {
   createdAt: Date;
   updatedAt: Date;
   visible: boolean;
+  authorId: string;
 };
 
 export class Post implements PostType {
@@ -16,8 +17,18 @@ export class Post implements PostType {
   createdAt: Date;
   updatedAt: Date;
   visible: boolean;
+  authorId: string;
 
-  constructor({ id, title, thumbnail, content, createdAt, updatedAt, visible }: PostType) {
+  constructor({
+    id,
+    title,
+    thumbnail,
+    content,
+    createdAt,
+    updatedAt,
+    visible,
+    authorId
+  }: PostType) {
     this.id = id;
     this.title = title;
     this.thumbnail = thumbnail;
@@ -25,6 +36,7 @@ export class Post implements PostType {
     this.createdAt = createdAt;
     this.updatedAt = updatedAt;
     this.visible = visible;
+    this.authorId = authorId;
   }
 }
 

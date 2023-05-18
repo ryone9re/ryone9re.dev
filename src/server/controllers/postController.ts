@@ -1,11 +1,7 @@
 import { prisma } from '@/infrastructure/prismaClient';
 import { PostRepository } from '@/infrastructure/repositories/PostRepository';
 import { PostService } from '@/server/services/post';
-import {
-  validateCreateUpdatePost,
-  validatePageNumber,
-  validatePostId
-} from '@/server/services/post/validation';
+import { validatePageNumber, validatePostId } from '@/server/services/post/validation';
 import { NextResponse, type NextRequest } from 'next/server';
 
 const postService = new PostService(new PostRepository(prisma));
@@ -63,17 +59,17 @@ export async function getOneController(
   return NextResponse.json(post);
 }
 
-export async function postController(req: NextRequest) {
-  const body = await req.json();
+// export async function postController(req: NextRequest) {
+//   const body = await req.json();
 
-  const result = validateCreateUpdatePost(body);
+//   const result = validateCreateUpdatePost(body);
 
-  if (!result.valid) {
-    console.log(result.errors);
-    return NextResponse.json(result.errors, { status: 400 });
-  }
+//   if (!result.valid) {
+//     console.log(result.errors);
+//     return NextResponse.json(result.errors, { status: 400 });
+//   }
 
-  const post = await postService.createPost(result.data);
+//   const post = await postService.createPost(result.data);
 
-  return NextResponse.json(post, { status: 201 });
-}
+//   return NextResponse.json(post, { status: 201 });
+// }

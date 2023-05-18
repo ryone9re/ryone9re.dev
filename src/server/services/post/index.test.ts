@@ -12,7 +12,8 @@ function generatePostData(): Post {
     content: 'Test content',
     createdAt: new Date(),
     updatedAt: new Date(),
-    visible: true
+    visible: true,
+    authorId: createId()
   };
 }
 

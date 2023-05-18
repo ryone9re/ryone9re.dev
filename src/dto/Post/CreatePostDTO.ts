@@ -3,6 +3,7 @@ type CreatePostDTOType = {
   thumbnail: string;
   content: string;
   visible: boolean;
+  authorId: string;
 };
 
 export class CreatePostDTO implements CreatePostDTOType {
@@ -10,11 +11,13 @@ export class CreatePostDTO implements CreatePostDTOType {
   thumbnail: string;
   content: string;
   visible: boolean;
+  authorId: string;
 
-  constructor({ title, thumbnail, content, visible }: CreatePostDTOType) {
+  constructor({ title, thumbnail, content, visible, authorId }: CreatePostDTOType) {
     this.title = title;
     this.thumbnail = thumbnail;
     this.content = content;
     this.visible = visible;
+    this.authorId = authorId;
   }
 }
