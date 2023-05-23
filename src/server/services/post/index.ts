@@ -24,4 +24,8 @@ export class PostService {
   async getPostsWithPagination(page: number): Promise<{ posts: Post[]; hasNext: boolean }> {
     return await this.#postRepositry.getPostsWithPagination(page);
   }
+
+  async getPublicPostsWithPagination(page: number): Promise<{ posts: Post[]; hasNext: boolean }> {
+    return await this.#postRepositry.getPublicPostsWithPagination(page);
+  }
 }

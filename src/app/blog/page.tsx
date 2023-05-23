@@ -1,7 +1,8 @@
 import { Animation } from '@/app/blog/animation';
-import { Pagination } from '@/app/blog/pagination';
 import { BlogCard } from '@/components/card/BlogCard';
+import { Pagination } from '@/components/navigation/pagination';
 import { getRequestOrigin } from '@/utils/getRequestOrigin';
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 async function getPosts(origin: string, page = '1') {
@@ -25,6 +26,28 @@ async function getPosts(origin: string, page = '1') {
   };
 
   return body;
+}
+
+type MetadataProps = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ searchParams }: MetadataProps): Promise<Metadata> {
+  const page = searchParams.p;
+
+  if (typeof page !== 'string' || page === '1') {
+    return {
+      title: `Blog | ryone9re`,
+      description: `ryone9reのブログ`,
+      keywords: ['ryone9re', 'ryone9reのサイト']
+    };
+  }
+
+  return {
+    title: `p.${page} | Blog | ryone9re`,
+    description: `ryone9reのブログ`,
+    keywords: ['ryone9re', 'ryone9reのサイト']
+  };
 }
 
 export default async function Page({ searchParams: { p } }: { searchParams: { p?: string } }) {

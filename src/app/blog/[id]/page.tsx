@@ -4,6 +4,7 @@ import { BlogPostMetadata } from '@/components/blog/BlogPostMetadata';
 import { BlogPostTitle } from '@/components/blog/BlogPostTitle';
 import { BackButton } from '@/components/buttons/BackButton';
 import { getRequestOrigin } from '@/utils/getRequestOrigin';
+import { Metadata } from 'next';
 
 async function getPost(origin: string, id: string) {
   const res = await fetch(`${origin}/api/posts/${id}`);
@@ -23,6 +24,25 @@ async function getPost(origin: string, id: string) {
   };
 
   return body;
+}
+
+type MetadataProps = {
+  params: {
+    id: string;
+  };
+  searchParams: URLSearchParams;
+};
+
+export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+  const origin = getRequestOrigin();
+
+  const post = await getPost(origin, params.id);
+
+  return {
+    title: `${post.title} | ryone9re`,
+    description: post.title,
+    keywords: ['ryone9re', 'ryone9reのサイト']
+  };
 }
 
 export default async function Page({ params: { id } }: { params: { id: string } }) {

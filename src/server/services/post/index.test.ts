@@ -31,7 +31,8 @@ describe('post service test', () => {
       getPostById: jest.fn(),
       getPosts: jest.fn(),
       getPublicPosts: jest.fn(),
-      getPostsWithPagination: jest.fn()
+      getPostsWithPagination: jest.fn(),
+      getPublicPostsWithPagination: jest.fn()
     };
     postService = new PostService(postRepository);
   });

@@ -127,8 +127,8 @@ export default function Header() {
           <Link href='/blog' className='text-md btn-ghost btn normal-case'>
             Blog
           </Link>
-          <Link href='/works' className='text-md btn-ghost btn normal-case'>
-            Works
+          <Link href='/resume' className='text-md btn-ghost btn normal-case'>
+            Resume
           </Link>
         </div>
       </header>

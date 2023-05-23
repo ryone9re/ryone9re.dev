@@ -1,16 +1,14 @@
 import { prisma } from '@/infrastructure/prismaClient';
 import { PostRepository } from '@/infrastructure/repositories/PostRepository';
 import { PostService } from '@/server/services/post';
-import { validatePageNumber, validatePostId } from '@/server/services/post/validation';
+import {
+  validateCreateUpdatePost,
+  validatePageNumber,
+  validatePostId
+} from '@/server/services/post/validation';
 import { NextResponse, type NextRequest } from 'next/server';
 
 const postService = new PostService(new PostRepository(prisma));
-
-export async function getAllController() {
-  const posts = await postService.getPosts();
-
-  return NextResponse.json(posts);
-}
 
 export async function getAllWithPaginationController(req: NextRequest) {
   const { searchParams } = new URL(req.url);
@@ -23,7 +21,30 @@ export async function getAllWithPaginationController(req: NextRequest) {
     const result = validatePageNumber(p);
 
     if (!result.valid) {
-      console.log(result.errors);
+      console.log(`getAllWithPaginationController: ${result.errors}`);
+      return NextResponse.json(result.errors, { status: 404 });
+    }
+
+    page = result.data;
+  }
+
+  const posts = await postService.getPostsWithPagination(page);
+
+  return NextResponse.json(posts);
+}
+
+export async function getPublicAllWithPaginationController(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+
+  const p = searchParams.get('p');
+
+  let page = 1;
+
+  if (p) {
+    const result = validatePageNumber(p);
+
+    if (!result.valid) {
+      console.log(`getPublicAllWithPaginationController: ${result.errors}`);
       return NextResponse.json(result.errors, { status: 404 });
     }
 
@@ -36,7 +57,7 @@ export async function getAllWithPaginationController(req: NextRequest) {
 }
 
 export async function getOneController(
-  req: NextRequest,
+  _: NextRequest,
   {
     params: { id }
   }: {
@@ -46,7 +67,7 @@ export async function getOneController(
   const result = validatePostId(id);
 
   if (!result.valid) {
-    console.log(result.errors);
+    console.log(`getOneController: ${result.errors}`);
     return NextResponse.json(result.errors, { status: 400 });
   }
 
@@ -59,17 +80,35 @@ export async function getOneController(
   return NextResponse.json(post);
 }
 
-// export async function postController(req: NextRequest) {
-//   const body = await req.json();
+export async function postController(req: NextRequest) {
+  const body = await req.json();
 
-//   const result = validateCreateUpdatePost(body);
+  const result = validateCreateUpdatePost(body);
 
-//   if (!result.valid) {
-//     console.log(result.errors);
-//     return NextResponse.json(result.errors, { status: 400 });
-//   }
+  if (!result.valid) {
+    console.log(`postController: ${result.errors}`);
+    return NextResponse.json(result.errors, { status: 400 });
+  }
 
-//   const post = await postService.createPost(result.data);
+  const post = await postService.createPost({ ...result.data, authorId: '' });
 
-//   return NextResponse.json(post, { status: 201 });
-// }
+  return NextResponse.json(post, { status: 201 });
+}
+
+export async function putController(
+  req: NextRequest,
+  {
+    params: { id }
+  }: {
+    params: { id: string };
+  }
+) {}
+
+export async function deleteController(
+  req: NextRequest,
+  {
+    params: { id }
+  }: {
+    params: { id: string };
+  }
+) {}

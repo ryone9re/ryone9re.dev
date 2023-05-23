@@ -19,7 +19,7 @@ export class PostRepository implements IPostRepository {
 
       return post;
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.createPost: ${e}`);
       throw e;
     }
   }
@@ -35,7 +35,7 @@ export class PostRepository implements IPostRepository {
 
       return updatedPost;
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.updatePost: ${e}`);
       throw e;
     }
   }
@@ -48,7 +48,7 @@ export class PostRepository implements IPostRepository {
         }
       });
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.deletePost: ${e}`);
       throw e;
     }
   }
@@ -67,7 +67,7 @@ export class PostRepository implements IPostRepository {
 
       return post;
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.getPostById: ${e}`);
       throw e;
     }
   }
@@ -80,7 +80,7 @@ export class PostRepository implements IPostRepository {
 
       return posts;
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.getPosts: ${e}`);
       throw e;
     }
   }
@@ -98,12 +98,35 @@ export class PostRepository implements IPostRepository {
 
       return posts;
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.getPublicPosts: ${e}`);
       throw e;
     }
   }
 
   async getPostsWithPagination(page = 1): Promise<{ posts: Post[]; hasNext: boolean }> {
+    const skip = PostConfig.maxPostsPerRequest * (page - 1);
+
+    try {
+      const posts = await this.#client.post.findMany({
+        take: PostConfig.maxPostsPerRequest + 1,
+        skip: skip,
+        orderBy: {
+          id: 'desc'
+        }
+      });
+
+      const hasNext = posts.length > PostConfig.maxPostsPerRequest;
+
+      const truncatedPosts = posts.slice(0, PostConfig.maxPostsPerRequest);
+
+      return { posts: truncatedPosts, hasNext };
+    } catch (e) {
+      console.log(`PostRepository.getPostsWithPagination: ${e}`);
+      throw e;
+    }
+  }
+
+  async getPublicPostsWithPagination(page = 1): Promise<{ posts: Post[]; hasNext: boolean }> {
     const skip = PostConfig.maxPostsPerRequest * (page - 1);
 
     try {
@@ -124,7 +147,7 @@ export class PostRepository implements IPostRepository {
 
       return { posts: truncatedPosts, hasNext };
     } catch (e) {
-      console.log(e);
+      console.log(`PostRepository.getPublicPostsWithPagination: ${e}`);
       throw e;
     }
   }
