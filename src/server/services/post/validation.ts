@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const CreateUpdatePostSchema = z.object({
-  title: z.string().min(1),
+  title: z.string().min(1).max(50),
   thumbnail: z.string().min(1).max(4),
   content: z.string().min(1),
   visible: z.boolean()
