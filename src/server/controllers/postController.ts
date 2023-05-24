@@ -51,7 +51,7 @@ export async function getPublicAllWithPaginationController(req: NextRequest) {
     page = result.data;
   }
 
-  const posts = await postService.getPostsWithPagination(page);
+  const posts = await postService.getPublicPostsWithPagination(page);
 
   return NextResponse.json(posts);
 }
@@ -102,13 +102,48 @@ export async function putController(
   }: {
     params: { id: string };
   }
-) {}
+) {
+  const body = await req.json();
+
+  const result = validateCreateUpdatePost(body);
+
+  if (!result.valid) {
+    console.log(`putController: ${result.errors}`);
+    return NextResponse.json(result.errors, { status: 400 });
+  }
+
+  const resultId = validatePostId(id);
+
+  if (!resultId.valid) {
+    console.log(`putController: ${resultId.errors}`);
+    return NextResponse.json(resultId.errors, { status: 400 });
+  }
+
+  const post = await postService.updatePost(resultId.data, result.data);
+
+  return NextResponse.json(post);
+}
 
 export async function deleteController(
-  req: NextRequest,
+  _: NextRequest,
   {
     params: { id }
   }: {
     params: { id: string };
   }
-) {}
+) {
+  const result = validatePostId(id);
+
+  if (!result.valid) {
+    console.log(`deleteController: ${result.errors}`);
+    return NextResponse.json(result.errors, { status: 400 });
+  }
+
+  const isSuccess = await postService.deletePost(result.data);
+
+  if (!isSuccess) {
+    return NextResponse.json({ message: 'Deletion Failed' }, { status: 500 });
+  }
+
+  return NextResponse.json({ message: 'Deletion Success' });
+}

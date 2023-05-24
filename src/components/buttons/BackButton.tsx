@@ -8,7 +8,7 @@ export function BackButton() {
   return (
     <>
       <button className='btn-primary btn-wide btn' onClick={() => router.back()}>
-        戻る
+        ← 戻る
       </button>
     </>
   );

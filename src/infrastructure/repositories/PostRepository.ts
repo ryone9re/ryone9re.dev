@@ -40,13 +40,15 @@ export class PostRepository implements IPostRepository {
     }
   }
 
-  async deletePost(postId: string): Promise<void> {
+  async deletePost(postId: string): Promise<boolean> {
     try {
-      await this.#client.post.delete({
+      const res = await this.#client.post.delete({
         where: {
           id: postId
         }
       });
+
+      return !!res;
     } catch (e) {
       console.log(`PostRepository.deletePost: ${e}`);
       throw e;
@@ -134,6 +136,9 @@ export class PostRepository implements IPostRepository {
         take: PostConfig.maxPostsPerRequest + 1,
         skip: skip,
         where: {
+          createdAt: {
+            lte: new Date()
+          },
           visible: true
         },
         orderBy: {
