@@ -2,6 +2,7 @@
 
 import { AnimatePresence } from 'framer-motion';
 import i18next from 'i18next';
+import { SessionProvider } from 'next-auth/react';
 import { PropsWithChildren } from 'react';
 import { z } from 'zod';
 import { zodI18nMap } from 'zod-i18n-map';
@@ -18,7 +19,9 @@ z.setErrorMap(zodI18nMap);
 export function ClientProviders({ children }: PropsWithChildren) {
   return (
     <>
-      <AnimatePresence>{children}</AnimatePresence>
+      <SessionProvider>
+        <AnimatePresence>{children}</AnimatePresence>
+      </SessionProvider>
     </>
   );
 }

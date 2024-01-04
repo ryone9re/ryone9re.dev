@@ -1,9 +1,14 @@
 import { Table } from '@/app/admin/table';
 import { Pagination } from '@/components/navigation/pagination';
 import { getRequestOrigin } from '@/utils/getRequestOrigin';
+import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 
 async function getPosts(origin: string, page = '1') {
+  const session = await getServerSession();
+
+  console.log(session);
+
   const res = await fetch(`${origin}/api/admin/posts?p=${page}`);
 
   if (!res.ok) {
