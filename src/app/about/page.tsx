@@ -17,7 +17,7 @@ export default function Page() {
           <h1 className='card-title'>ryone9re</h1>
           <p>こんにちは!! ryone9reと申す者です</p>
           <p>とある大学でCSを学んでいます</p>
-          <p>高専時代は化学を専攻してました</p>
+          <p>が、高専時代は化学を専攻してました</p>
           <p>WEBアプリケーションの開発や低レイヤーが好きです</p>
           <p>🐶好きです</p>
         </div>
