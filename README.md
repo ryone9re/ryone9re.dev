@@ -1,5 +1,5 @@
-# ryone9re.link
+# ryone.dev
 
 ## Test status
 
-![Test](https://github.com/ryone9re/ryone9re.link/workflows/test/badge.svg)
+![Test](https://github.com/ryone9re/ryone.dev/workflows/test/badge.svg)
